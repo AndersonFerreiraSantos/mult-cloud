@@ -1,12 +1,68 @@
-Objetivo: 
+# Kubernetes
+[ doc - kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/)
+
+### services:
+
+> Pod -> 2: { Container: 1, Container: 2 }
+
+### minikube:
+> minikube cria um cluster com apenas 1 node contendo os componentes do Master Node e do Worker Node.
+
+> Utilziado para configuração base do kubernetes, ótima ferramenta de estudo.
+
+> Com minikube podemos criar um container com ambiente kubernetes.
+
+> para crair um cluster com minikube basta executar ``minikube start`` e ara deletar ``minikube start``.
+
+> criar container com o nome chamado nginx com imagem do nginx ``kubectl run nginx --image nginx`` ex: kubectl run nome-do-POD --image nome-da-imagem, para mais infos adicionar: ``-o wide``.
+
+
+[doc - install - mac](https://minikube.sigs.k8s.io/docs/)
+
+> O kubernetes faz acesso ao POD e não a container
+> 
+
+    kubernetes cluster {
+        Node: [
+            POD: {
+                container
+            }
+            POD: {
+                container
+            }
+        ]
+    }
+
+### POD:
+
+> POD em Kubernetes é a menor unidade de computação publicável em um computador que podemos criar e gerencias
+
+### kubectl
+
+> Buscar a os PODs criados ``kubectl get pods``.
+
+> Pegar descriçnao do POD ``kubectl describe pod nginx``.
+
+> Fazemos use do kubectl para criar PODs no nosso cluster
+``kubectl run nginx --image nginx``.
+
+> Para criar um pode através do de um YAML podemos utilizar ``create -f nome-do-arquivo.yaml``.
+
+
+
+
+# Objetivo: 
     
 
-    Geral: 
-        Estudo cloud -> devops
-        Iniciou seus serviços em 2008 ->  ficou conehcida mundialmente em 2013
-        GCP - Google Cloud Plataform
+### Geral: 
+ > Estudo cloud -> devops
 
-Localizações:
+> Iniciou seus serviços em 2008 ->  ficou conehcida mundialmente em 2013
+        
+>GCP - Google Cloud Plataform
+
+> Localizações:
+
     3 zonas: 
         exemplo:
         Multi-Region{
@@ -29,7 +85,8 @@ Localizações:
             }
         }
 
-Organização da conta GCP:
+### Organização da conta GCP:
+
     ORGANIZATION - Company: {
         Dept Y: {
             Team A
@@ -47,17 +104,34 @@ Organização da conta GCP:
         Shared
     }
 
-habilitando uma organização: 
-IAM 
+### YAML:
+> A configuração de YAML para kubernetes precisa ter algumas proprides:
+
+> OBS: Não devemos utilizar tab para identar o arquivo, para YAML é utilizado dois espaços.
+
+    apiVersion: v1
+    Kind: Pod
+    metadata:
+        name: nome-do-pod
+        labels:
+            app: nome-da-app
+
+    spec:
+
+> O arquivo YAML pode ser criado pelo kubectl ``kubectl create -f nome-do-arquivo-yaml``
+
+## habilitando uma organização:
+
+> IAM 
     Identity 
     Seguir passo a passo de configuração da organização solicitada pela Google...
 
-Manage Resources
+> Manage Resources
     Podemos configiurar os folders,
     configurar nome do projeto, 
     criar folders...
 
-Billing:  15
+> Billing:  15
     Criar relatórios de billings por projetos e outroas coisas referente a gastos.
 
     Cost Table:
