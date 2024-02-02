@@ -2,6 +2,7 @@
 [ doc - kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/)
 
 ### services:
+> Pod -> 1: { Container: 1, Container: 2 }
 
 > Pod -> 2: { Container: 1, Container: 2 }
 
@@ -119,6 +120,30 @@
     spec:
 
 > O arquivo YAML pode ser criado pelo kubectl ``kubectl create -f nome-do-arquivo-yaml``
+
+### Replication Controller -> ReplicaSets:
+> Responsável fazer uma replica exata de um pod em execução, além disso ele certica que o número especificado de pods do cluster estejam sendo executados.
+
+> O ReplicaSets é uma versão mais atualizada do Replication Controller.
+
+> A escolha entre ReplicationController e ReplicaSets pode ser feita na chave ``kind`` do yaml.
+
+> A configuração do POD a ser replicado deve ser feita no ``spec``
+
+    spec: {
+        template:{},
+        spec: {},
+        replicas: 2
+        }
+        Selector
+> Nesse caso deve ter ao menos dois PODs em execução.
+
+> Um diferença entre o ReplicationController e o ReplicaSets é que no apiVersion o valor é v1 ja no ReplicaSet o valor é apps/v1.
+
+> O campo Selector indica, dentre os PODs existentes qual deve ser utilizado para replicação no cluter, no ReplicaSet o Selector é obrigatório e no ReplicationController é opcional.
+
+> É possível criar um um ReplicaSets para tipos diferentes de PODS's dentro de um mesmo cluster, para isso é necessário aidiconar a chave label para identificação dos POD's
+
 
 ## habilitando uma organização:
 
